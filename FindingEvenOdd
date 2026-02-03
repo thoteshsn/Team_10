@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+void FindingEvenOdd();
+int main()
+{
+   FindingEvenOdd();
+    return 0;
+}
+void FindingEvenOdd()
+{
+    int *ptri;
+    int n,i;
+    printf("Enter the number you need to process:");
+    ptri=(int*)calloc(n,sizeof(int*));
+    scanf("%d",&n);
+    if(ptri==0)
+    {
+        printf("Memory is not allocated\n");
+    }
+    else
+    {
+        printf("Enter the %d elements:\n",n);
+        for(i=0;i<n;i++)
+        {
+            scanf("%d",&ptri[i]);
+        }
+        printf("Enter the Even odd numbers:\n");
+        for(i=0;i<n;i++)
+        {
+            if(ptri[i]%2==0)
+            {
+                printf("%d is a Even number\n",ptri[i]);
+            }
+            else
+            {
+                printf("%d is a Odd number\n",ptri[i]);
+            }
+        }
+
+
+    }
+
+}
