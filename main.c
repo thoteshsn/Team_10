@@ -1,70 +1,83 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define size 3
-int a[size],top=-1;
-void push();
-void pop();
+int a[size],f=-1,r=-1;
+void insert();
+void _delete();
 void display();
 int main()
 {
     int choice;
     while(1)
     {
-        printf("1.push\n2.pop\n3.Display\n4.Exit\n");
-        printf("Enter the choice:");
+        printf("1.insert\n2._delete\n3.display\n4.Exit\n");
+        printf("Enter the number:");
         scanf("%d",&choice);
         switch(choice)
         {
-            case 1:push();break;
-            case 2:pop();break;
+            case 1:insert();break;
+            case 2:_delete();break;
             case 3:display();break;
-            case 4:exit(0);
-            default:printf("Enter valid choice\n");
+            case 4:exit(0);break;
         }
-    }
-    return 0;
 
+    }
 }
-void push()
+void insert()
 {
     int element;
-    if(top==size-1)
+    if(r==size-1)
     {
-        printf("Stack is full,leads over flow\n");
+        printf("Queue is full ,leads to over flow\n");
+        return ;
     }
     else
     {
-        printf("Enter the number of stack:");
+        printf("Enter the element");
         scanf("%d",&element);
-        top++;
-        a[top] = element;
+        r++;
+        a[r]=element;
+        if(f==-1)
+        f++;
     }
+
 }
-void pop()
+void _delete()
 {
-    if(top==-1)
+    int element;
+
+    if(f==-1)
     {
-        printf("No stack,leads to unnderflow\n");
+        printf("Queue is full,leads to underflow");
+        return;
+    }
+    else if(f==r)
+    {
+       element = a[f];
+
+        f=r=-1;
+
     }
     else
     {
-        printf("poped element is :%d\n",a[top]);
-        top--;
+      element = a[f];
+        f++;
     }
+    printf("delete element is %d\n",element);
 }
 void display()
 {
     int i;
-    if(top==-1)
+    if(f == -1)
     {
-        printf("No stack,leads to unnderflow\n");
+        printf("Queue is full,leads to underflow");
+        return;
     }
     else
+        for(i=f;i<=r;i++)
     {
-        for(i=top;i>=0;i--)
-        {
-            printf("%d\n",a[i]);
-        }
+        printf("%d\t",a[i]);
     }
-    printf("Display element is %d\n",a[top]);
 }
+
+
